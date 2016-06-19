@@ -352,8 +352,8 @@ class Doku_Renderer_metadata extends Doku_Renderer {
      * @param string|int $x first value
      * @param string|int $y second value
      */
-    function multiplyentity($x, $y) {
-        $this->cdata($x.'×'.$y);
+    function multiplyentity($a) {
+        $this->cdata(implode('×', $a));
     }
 
     /**

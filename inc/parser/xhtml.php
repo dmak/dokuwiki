@@ -723,13 +723,12 @@ class Doku_Renderer_xhtml extends Doku_Renderer {
     /**
      * Typographically format a multiply sign
      *
-     * Example: ($x=640, $y=480) should result in "640×480"
+     * Example: ($a=[640,480]) should result in "640×480"
      *
-     * @param string|int $x first value
-     * @param string|int $y second value
+     * @param array $a all values
      */
-    function multiplyentity($x, $y) {
-        $this->doc .= "$x&times;$y";
+    function multiplyentity($a) {
+        $this->doc .= implode('&times', $a);
     }
 
     /**

@@ -494,12 +494,11 @@ class Doku_Renderer extends DokuWiki_Plugin {
     /**
      * Typographically format a multiply sign
      *
-     * Example: ($x=640, $y=480) should result in "640×480"
+     * Example: ($a=[640,480]) should result in "640×480"
      *
-     * @param string|int $x first value
-     * @param string|int $y second value
+     * @param array $a all values
      */
-    function multiplyentity($x, $y) {
+    function multiplyentity($a) {
     }
 
     /**

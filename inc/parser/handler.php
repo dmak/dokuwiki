@@ -388,7 +388,7 @@ class Doku_Handler {
 
     function multiplyentity($match, $state, $pos) {
         preg_match_all('/\d+/',$match,$matches);
-        $this->_addCall('multiplyentity',array($matches[0][0],$matches[0][1]), $pos);
+        $this->_addCall('multiplyentity',array($matches[0]), $pos);
         return true;
     }
 
