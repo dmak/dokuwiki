@@ -352,7 +352,7 @@ function css_interwiki(){
     // default style
     echo 'a.interwiki {';
     echo ' background: transparent url('.DOKU_BASE.'lib/images/interwiki.png) 0px 1px no-repeat;';
-    echo ' padding: 1px 0px 1px 16px;';
+    echo ' padding: 0px 0px 1px 18px;';
     echo '}';
 
     // additional styles when icon available
