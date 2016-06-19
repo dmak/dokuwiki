@@ -1,6 +1,6 @@
 ====== Formatting Syntax ======
 
-[[doku>DokuWiki]] supports some simple markup language, which tries to make the datafiles to be as readable as possible. This page contains all possible syntax you may use when editing the pages. Simply have a look at the source of this page by pressing "Edit this page". If you want to try something, just use the [[playground:playground|playground]] page. The simpler markup is easily accessible via [[doku>toolbar|quickbuttons]], too.
+[[doku>DokuWiki]] supports some simple markup language, which tries to make the datafiles to be as readable as possible. This page contains all possible syntax you may use when editing the pages. Simply have a look at the source of this page by pressing "Edit this page". If you want to try something, just use the [[playground|playground]] page. The simpler markup is easily accessible via [[doku>toolbar|quickbuttons]], too.
 
 ===== Basic Text Formatting =====
 
@@ -252,21 +252,32 @@ DokuWiki converts commonly used [[wp>emoticon]]s to their graphical equivalents.
   * FIXME %%  FIXME %%
   * DELETEME %% DELETEME %%
 
+Extra Smileys:
+
+  * :ADD:   %% :ADD: %%
+  * :DEL:   %% :DEL: %%
+  * :YES:   %% :YES: %%
+  * :NO:    %% :NO: %%
+  * :HELP:  %% :HELP: %%
+  * :INFO:  %% :INFO: %%
+  * :WARN:  %% :WARN: %%
+  * :IDEA:  %% :IDEA: %%
+
 ==== Text to HTML Conversions ====
 
 Typography: [[DokuWiki]] can convert simple text characters to their typographically correct entities. Here is an example of recognized characters.
 
--> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
+-> <- <-> => <= <=> >> << -- --- (c) (tm) (r) 1st 2nd 3rd
 "He thought 'It's a man's world'..."
 
 <code>
--> <- <-> => <= <=> >> << -- --- 640x480 (c) (tm) (r)
+-> <- <-> => <= <=> >> << -- --- (c) (tm) (r) 1st 2nd 3rd
 "He thought 'It's a man's world'..."
 </code>
 
 The same can be done to produce any kind of HTML, it just needs to be added to the [[doku>entities|pattern file]].
 
-There are three exceptions which do not come from that pattern file: multiplication entity (640x480), 'single' and "double quotes". They can be turned off through a [[doku>config:typography|config option]].
+There are three exceptions which do not come from that pattern file: multiplication entity (640x480x32), 'single' and "double quotes". They can be turned off through a [[doku>config:typography|config option]].
 
 ===== Quoting =====
 

@@ -55,6 +55,112 @@ All documentation and additional information besides the [[syntax|syntax descrip
   * [[doku>thanks|Some humble thanks]]
 
 
+**Interesting DocuWiki plugins**
+
+  * See [[doku>wiki:entities|HTML entities]] about how add new custom entities ([[http://wiki.splitbrain.org/plugin:hr|hr]] and [[http://wiki.splitbrain.org/plugin:nbsp|nbsp]] and [[http://wiki.splitbrain.org/plugin:shy|shy]] are not needed)
+
+  * :ADD::WARN: [[http://wiki.jalakai.co.uk/dokuwiki/doku.php/tutorials/header|header]] -- enables formatting in headers
+    ([[http://www.freelists.org/archives/dokuwiki/11-2006/msg00172.html|post1]],
+    [[http://www.freelists.org/archives/dokuwiki/09-2006/msg00050.html|post2]],
+    [[http://www.freelists.org/archives/dokuwiki/05-2006/msg00278.html|post3]],
+    [[http://www.freelists.org/post/dokuwiki/Can-one-make-a-heading-also-a-link,12|post4]])
+  * [[doku>plugin:numberedheadings|numberedheadings]] -- generate multi-level numbers for headers -- //seems to be included into **header** plugin//
+  * :ADD: [[doku>plugin:code2|code2]] -- powerful extension of build-in code
+  * :ADD: [[doku>plugin:blockquote|blockquote]]
+  * :ADD: [[doku>plugin:note|note]] -- allows you to create nice note boxes
+  * [[doku>plugin:styler|styler]], [[http://wiki.splitbrain.org/plugin:note|note]] -- enable more block formatting possibilities, like ''<quote>'', ''<epigraph>'', ''<verse>'', ''<note>''
+  * :ADD::WARN: [[doku>plugin:folded|folded]] -- folding the contents, similar to [[http://wiki.splitbrain.org/plugin:outliner|outliner]]
+  * :ADD: [[doku>plugin:htmlcomment|htmlcomment]]
+  * [[doku>plugin:math|math]] and [[http://wiki.splitbrain.org/plugin:latex|latex]] -- embedded formulas support
+  * :ADD: [[doku>plugin:mllist|mllist]] -- support of linebreaks for lists
+  * [[doku>plugin:linkext|linkext]] -- adding letters following the link to the link //does not work, core should be patched//
+  * [[doku>plugin:phpinc|phpinc]], [[http://wiki.splitbrain.org/plugin:source|source]] -- include PHP/HTML files into the page
+  * [[doku>plugin:javadoc|javadoc]]
+  * :ADD: [[doku>plugin:dlcount|dlcount]] -- adds download counters to download links
+
+  * :ADD: [[doku>plugin:authchained|authchained]] -- delegates the authentication to the authentication plugin, which first returns true when checking username and password
+  * :ADD: [[doku>plugin:searchtext|searchtext]] -- plugin searches pages rendered as text instead of raw wiki
+  * :ADD: [[doku>plugin:indexmenu|indexmenu]], [[doku>plugin:indexmenu2|indexmenu2]], [[doku>plugin:pageindex|pageindex]] -- representing namespaces/pages as a JS menu or list
+  * [[doku>plugin:flowplay|flowplay]] -- integrates the flowplayer to stream video to an embedded flash applet (like on YouTube)
+  * [[doku>plugin:google_cal|google cal]]
+  * [[doku>plugin:googlemaps|google maps]] //was rewritten, see [[plugin:google_maps]]//
+  * [[doku>plugin:google_video|google video]]
+  * [[doku>plugin:youtube|youtube]]
+  * [[doku>plugin:goto|goto]]
+  * [[doku>plugin:isbn|isbn]] -- create links to amazon by ISBN number
+  * [[doku>plugin:gallery|gallery]] -- generates a list of images from a given namespace as thumbnails
+  * [[doku>plugin:medialist|medialist]] :HELP:
+  * [[http://dv.tibbo.com/files_plugin/|files]] -- nice implementation of handling of media resources; the analog of [[doku>mediamanager]]
+  * [[doku>plugin:pagemove|pagemove]] -- administration plugin to enable renaming and moving of pages
+  * [[doku>plugin:refnots|refnots]] -- maintains reference database (e.g. literature list)
+  * [[doku>plugin:select|select]] -- creates a drop-down list with pages to jump to
+  * [[doku>plugin:smblink|smblink]] -- create correct links to shared resources
+  * <del>[[doku>plugin:spellcheck|spellcheck]] -- spellchecker</del> (//obsolete//)
+  * [[doku>plugin:uparrow|uparrow]] -- generate "Go to the top of the page" link where requested
+  * [[doku>plugin:userannotations|userannotations]] -- allows users to associate misc annotations with the page
+  * [[doku>plugin:userpoll|userpoll]] -- create a poll
+  * [[doku>plugin:vcard|vcard]] -- generates a vCard
+
+  * [[http://dokuwiki.jalakai.co.uk/|Download dokuwiki plugins & templates by Chris Smith]]
+
+**ToDo List**
+
+  * [[http://www.freelists.org/post/dokuwiki/Regenerating-of-meta-information-for-pages,11|Re-generating of meta information for pages]] -- describes the problems of [[http://wiki.jalakai.co.uk/dokuwiki/doku.php/tutorials/header|header]] plugin and ways out
+  * [[http://www.freelists.org/post/dokuwiki/Links-various-questions,6|Links: various questions]] -- ideas how to improve formatting in links. Should be merged into one plugin:
+    * :YES: [[doku>plugin:externallink|externallink]] -- support of external links to the same (hoster) server
+    * [[doku>plugin:relativelinks|relativelinks]] -- refer links relative to current namespace
+    * [[doku>plugin:revlink|revlink]] -- refer the particular page revision
+  * feeding does not work
+
+
+**Blogging**
+
+  * :YES: [[doku>plugin:blog|blog]] -- main blog functionality
+  * :YES: [[doku>plugin:tag|tag]] -- tags for pages (see also [[doku>plugin:tagentry|tagentry]] to edit tags)
+  * :YES: [[doku>plugin:cloud|cloud]] -- displaying the cloud of tags
+  * :YES: [[doku>plugin:discussion|discussion]] -- discussion threads for blog pages
+  * :HELP: [[doku>plugin:feedmod|feedmod]] -- extended HTML feed for blog pages
+  * :YES: [[doku>plugin:include|include]] -- include one page into another
+  * :YES: [[doku>plugin:pagelist|pagelist]] -- refer the other page information and include it
+  * :YES: [[doku>plugin:captcha|captcha]] -- anti spam measures
+
+
+===== Questions answered =====
+
+=== How to convert all pages from URL-encoded to UTF8? ===
+
+<note tip>
+Read [[doku>tips:convert_to_utf8|this tip]] about how to convert the filenames. This question was raised several times in maillist:
+  * [[http://www.freelists.org/post/dokuwiki/PHP-Script-to-help-migrate-to-UTF8-filedirectory-names,4|PHP Script to help migrate to UTF-8 file/directory names]]
+  * [[http://www.freelists.org/post/dokuwiki/Namespaces-page-names-and-media-file-names-in-pure-UTF8,5|Namespaces, page names and media file names in pure UTF-8]]
+  * [[http://www.freelists.org/post/dokuwiki/Page-names-in-UTF8-on-filesystem|Page names in UTF-8 on filesystem]]
+</note>
+
+
+=== Why PNG images with transparency are not displayed correctly with IE? ===
+
+<note tip>
+Indeed, IE 5.5 & 6 do not support PNG images with full alpha channel transparency (should be fixed in IE7). See [[http://24ways.org/2007/supersleight-transparent-png-in-ie6|here]] and [[http://www.twinhelix.com/css/iepngfix/|here]] for more details and solution for the problem, which is based on IE-specific ability to apply custom filters to images:
+<code css>
+img {
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(...);
+}
+</code>
+</note>
+
+
+=== Why rounded borders are not correctly rendered in IE? ===
+
+<note tip>
+IE version 7 and earlier do not support ''border-radius'' CSS attribute. See [[http://www.dillerdesign.com/experiment/DD_roundies/|here]] and [[doku>plugin:note#rendering_in_browsers|here]] for more information & fix (which is based on VML sublayers).
+</note>
+
+
+=== What is a workaround for unsupported ''min-height''/''max-height'' in IE? ===
+
+<note tip>See [[http://perishablepress.com/press/2007/01/16/maximum-and-minimum-height-and-width-in-internet-explorer/|here]].</note>
+
+
 ===== Copyright =====
 
 2004-2015 (c) Andreas Gohr <andi@splitbrain.org>((Please do not contact me for help and support -- use the [[doku>mailinglist]] or [[http://forum.dokuwiki.org|forum]] instead)) and the DokuWiki Community
