@@ -270,7 +270,7 @@ class Doku_Parser_Mode_footnote extends Doku_Parser_Mode {
 
     function postConnect() {
         $this->Lexer->addExitPattern(
-            '\x29\x29','footnote'
+            '\x29\x29(?!\x29)','footnote'
             );
     }
 
