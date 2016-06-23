@@ -353,7 +353,7 @@ class Doku_Parser_Mode_eol extends Doku_Parser_Mode {
 class Doku_Parser_Mode_hr extends Doku_Parser_Mode {
 
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('\n[ \t]*-{4,}[ \t]*(?=\n)',$mode,'hr');
+        $this->Lexer->addSpecialPattern('[ \t]*-{4,}[ \t]*(?=\n)',$mode,'hr');
     }
 
     function getSort() {
