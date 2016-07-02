@@ -229,7 +229,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
     * @param   string $user the user name
     * @return  array containing user data or false
     */
-    public function getUserData($user) {
+    public function getUserData($user, $requireGroups = false) {
         global $ACT;
         //if(!$this->cando['external']) msg("no valid authorisation system in use", -1);
         //       echo "TESTSETEST";
@@ -237,12 +237,12 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
         //print_r($this->chained_auth);
         if ($ACT == "admin" && $_REQUEST['page']=="usermanager") {
             if(!is_null($this->usermanager_auth))
-                return $this->usermanager_auth->getUserData($user);
+                return $this->usermanager_auth->getUserData($user, $requireGroups);
 	}
 
         if(is_null($this->chained_auth)) {
             foreach($this->chained_plugins as $module) {
-                $tmp_array = $module[1]->getUserData($user);
+                $tmp_array = $module[1]->getUserData($user, $requireGroups);
                 if(!is_bool($tmp_array))
                     $tmp_chk_arr =array_filter($tmp_array);
                 if(!empty($tmp_chk_arr) && $tmp_array)
@@ -250,7 +250,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
             }
             return false;
         } else {
-            return $this->chained_auth->getUserData($user);
+            return $this->chained_auth->getUserData($user, $requireGroups);
         }
     }
 
