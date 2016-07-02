@@ -1,0 +1,12 @@
+a.gmaps_link {
+	background: transparent url(gmaps_link.png) no-repeat left center; /* "top" does not look nicely in headers; "center" creates artifacts when link is split into several lines */
+	padding: 1px 0px 1px 12px;
+}
+
+div.gmaps_frame {
+	border: 1px solid __border__;
+}
+
+div.gmaps_marker {
+	font-size: 90%;
+}

@@ -1,0 +1,7 @@
+base   htmlcomment
+author Christopher Arndt
+email  chris@chrisarndt.de
+date   2013-03-19
+name   HTML Comment Plugin
+desc   allows HTML comments to be retained in the output
+url    http://www.dokuwiki.org/plugin:htmlcomment
