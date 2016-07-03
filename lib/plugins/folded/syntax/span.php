@@ -31,15 +31,15 @@ class syntax_plugin_folded_span extends DokuWiki_Syntax_Plugin {
     function getType(){ return 'formatting'; }
     function getAllowedTypes() { return array('substition','protected','disabled','formatting'); }
     function getSort(){ return 405; }
-    function connectTo($mode) { $this->Lexer->addEntryPattern('\+\+.*?\|(?=.*\+\+)',$mode,'plugin_folded_span'); }
-    function postConnect() { $this->Lexer->addExitPattern('\+\+','plugin_folded_span'); }
+    function connectTo($mode) { $this->Lexer->addEntryPattern('<fold\s*\|.*?>(?=.*?</fold>)',$mode,'plugin_folded_span'); }
+    function postConnect() { $this->Lexer->addExitPattern('</fold>','plugin_folded_span'); }
 
    /**
     * Handle the match
     */
     function handle($match, $state, $pos, Doku_Handler $handler){
         if ($state == DOKU_LEXER_ENTER){
-            $match = trim(substr($match,2,-1)); // strip markup
+            $match = trim(substr($match,strpos($match,'|')+1,-1)); // strip markup
         } else if ($state == DOKU_LEXER_UNMATCHED) {
             $handler->_addCall('cdata',array($match), $pos);
             return false;
