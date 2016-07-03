@@ -10,7 +10,7 @@ if (! class_exists('syntax_plugin_code')) {
 	// Include parent class:
 	require_once(DOKU_PLUGIN . 'syntax.php');
 	// We're dealing with "GeSHi" here, hence include it:
-	require_once(DOKU_INC . 'inc/geshi.php');
+	require_once(DOKU_INC . 'vendor/easybook/geshi/geshi.php');
 
 /**
  * <tt>syntax_plugin_code.php </tt>- A PHP4 class that implements the
@@ -434,7 +434,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 	function connectTo($aMode) {
 		// look-ahead to minimize the chance of false matches:
 		$this->Lexer->addEntryPattern(
-			'\x3Ccode(?=[^>]*\x3E\r?\n.*\n\x3C\x2Fcode\x3E)',
+			'<code(?=[^>]*>.*?</code>)',
 			$aMode, 'plugin_code');
 	} // connectTo()
 
@@ -551,7 +551,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 	 * @see render()
 	 * @static
 	 */
-	function handle($aMatch, $aState, $aPos, &$aHandler) {
+	function handle($aMatch, $aState, $aPos, Doku_Handler $aHandler) {
 		if (DOKU_LEXER_UNMATCHED != $aState) {
 			return array($aState);	// nothing to do for "render()"
 		} // if
@@ -652,7 +652,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 			(?>
 				\x7C
 				# extract the position flag:
-				([bfht])?\s*
+				(?:([bfht])\s)?\s*
 				#	match 6
 				# extract the header,footer line:
 				([^\x7C]+)
@@ -675,7 +675,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 		*/
 		if (preg_match('/^\s*(?=\S)(?>(?>(diff)(?>\s+([cnrsu]?))?)|'
 			. '(?>([a-z][^\x7C\s]*)(?>\s+(\d\d*))?)|(\d\d*)|\s*)[^\x7C]*'
-			. '(?>\x7C([bfht])?\s*([^\x7C]+)(?>\x7C\s*(h|s)?.*)?)?$/iu',
+			. '(?>\x7C(?:([bfht])\s)?\s*([^\x7C]+)(?>\x7C\s*(h|s)?.*)?)?$/iu',
 		$aMatch[0], $hits)) {
 			unset($hits[0]);	// free mem
 			// $hits[1] = "diff"
@@ -704,15 +704,15 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 			} // if
 			if (isset($hits[7]) && ($hits[7])) {
 				$hits[6] = (isset($hits[6]))
-					? strtolower($hits[6]) . 'f'
-					: 'f';
+					? strtolower($hits[6]) . 'h'
+					: 'h';
 				switch ($hits[6]{0}) {
-					case 'h':
-					case 't':
-						$ht = trim($hits[7]);
+					case 'b':
+					case 'f':
+						$ft = trim($hits[7]);
 						break;
 					default:
-						$ft = trim($hits[7]);
+						$ht = trim($hits[7]);
 						break;
 				} // switch
 				if (isset($hits[8])) {
@@ -800,8 +800,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 	 * @public
 	 */
 	function postConnect() {
-		// look-before to minimize the chance of false matches:
-		$this->Lexer->addExitPattern('(?<=\n)\x3C\x2Fcode\x3E',
+		$this->Lexer->addExitPattern('</code>',
 			'plugin_code');
 	} // postConnect()
 
@@ -833,7 +832,7 @@ class syntax_plugin_code extends DokuWiki_Syntax_Plugin {
 	 * @public
 	 * @see handle()
 	 */
-	function render($aFormat, &$aRenderer, &$aData) {
+	function render($aFormat, Doku_Renderer $aRenderer, $aData) {
 		if (DOKU_LEXER_UNMATCHED != $aData[0]) {
 			return TRUE;
 		} // if

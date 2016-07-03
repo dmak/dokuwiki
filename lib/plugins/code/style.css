@@ -31,7 +31,7 @@ div.dokuwiki pre.code,pre.code{background:#fcfdfe none;color:#000;padding:0.4ex;
 .code .st0{background:inherit;color:#900;}
 .code .sy0{background:inherit;color:#6c6;}
 pre.code a{border:none;}
-div.dokuwiki pre.console,pre.console{background:#333 none;color:#fff;font-weight:900;padding:0.4ex 0.3ex 0.6ex 0.6ex;}
+div.dokuwiki pre.console,pre.console{background:#a6b4c3 none;color:black;font-weight:900;padding:0.4ex 0.3ex 0.6ex 0.6ex;}
 div.dokuwiki pre.console .lno,pre.console .lno{background:inherit;color:#cff;font-size:smaller;font-style:italic;}
 div.code{margin:0.4ex 0;padding:0.4ex 0;}
 div.code pre.code{margin:0;}
