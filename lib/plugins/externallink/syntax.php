@@ -48,7 +48,7 @@ class syntax_plugin_externallink extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         $match = substr($match,3,-2); //strip [[@ from start and ]] from end
         $match = explode("|",$match);
         return $match;
@@ -57,7 +57,7 @@ class syntax_plugin_externallink extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
         if($mode == 'xhtml'){
             $text=$this->_externallink($renderer, $data[0], $data[1]);
             $renderer->doc .= $text;
@@ -67,7 +67,7 @@ class syntax_plugin_externallink extends DokuWiki_Syntax_Plugin {
     }
  
  
-    function _externallink(&$renderer, $url, $name = NULL) {
+    function _externallink(Doku_Renderer $renderer, $url, $name = NULL) {
         global $conf;
         // Just some basic cleaning
         if(substr($url,0,7) == 'http://') {
