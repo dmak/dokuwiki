@@ -101,13 +101,15 @@ img.media {
 img.medialeft {
   border: 0;
   float: left;
-  margin: 0 1.5em 0 0;
+  clear: both;
+  margin: 1em 1em 0 0;
 }
 
 img.mediaright {
   border: 0;
   float: right;
-  margin: 0 0 0 1.5em;
+  clear: both;
+  margin: 1em 0 0 1em;
 }
 
 /* unordered lists */
@@ -234,5 +236,5 @@ table.inline td {
   text-align: right;
 }
 
-.toc, .footerinc, .header, .bar, .user {display:none}
+.toc, #dw__toc, .footerinc, .header, .bar, .user {display:none}
 

@@ -5,5 +5,5 @@
  */
 
 /* prevent the sidebar being included when printing wiki pages */
-    #sidebar {display:none;}
+    div.sidebar {display:none;}
 

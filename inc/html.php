@@ -221,7 +221,7 @@ function html_btn($name, $id, $akey, $params, $method='get', $tooltip='', $label
         $tip = htmlspecialchars($label);
     }
 
-    $ret .= '<button type="submit" ';
+    $ret .= '<button type="submit" class="button" ';
     if($akey){
         $tip .= ' ['.strtoupper($akey).']';
         $ret .= 'accesskey="'.$akey.'" ';

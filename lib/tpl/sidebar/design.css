@@ -17,12 +17,13 @@ body {
 
 /* the document */
 div.dokuwiki div.page {
-  margin: 4px 2em 0 1em;
+  padding: 1em 1.5em 0 0.5em;
   text-align: justify;
 }
 
 div.dokuwiki table {
   font-size: 100%;
+  clear: both;
 }
 
 div.dokuwiki tr,
@@ -32,13 +33,14 @@ div.dokuwiki th {
 
 div.dokuwiki img {
   border: 0;
+  vertical-align: text-top;
 }
 
 div.dokuwiki p,
 div.dokuwiki blockquote,
 div.dokuwiki table,
 div.dokuwiki pre {
-  margin: 0 0 1.0em 0;
+  margin: 0 0 0.3em 0;
 }
 
 div.dokuwiki hr {
@@ -46,6 +48,8 @@ div.dokuwiki hr {
   border-top: 1px solid __border__;
   text-align: center;
   height: 0px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 div.dokuwiki div.nothing {
@@ -105,9 +109,9 @@ div.dokuwiki select.edit {
   border: 1px solid __border__;
   color: __text__;
   background-color: __background__;
-  vertical-align: middle;
-  margin: 1px;
+  margin: 0 3px 1px;
   padding: 0.20em 0.3em;
+  vertical-align: bottom;
   display: inline;
 }
 
@@ -259,7 +263,6 @@ div.dokuwiki h4 a,
 div.dokuwiki h5 a,
 div.dokuwiki a.nolink {
   color: __text__ !important;
-  text-decoration: none !important;
 }
 
 /* external link */
@@ -336,6 +339,10 @@ div.dokuwiki div.breadcrumbs {
   padding: 0 0 0 4px;
 }
 
+div.dokuwiki div.breadcrumbs a {
+  color: __existing__;
+}
+
 div.dokuwiki span.user {
   color: __text_other__;
   font-size: 90%;
@@ -354,13 +361,15 @@ div.dokuwiki img.media {
 div.dokuwiki img.medialeft {
   border: 0;
   float: left;
-  margin: 0 1.5em 0 0;
+  clear: left;
+  margin: 0em 1em 0 0;
 }
 
 div.dokuwiki img.mediaright {
   border: 0;
   float: right;
-  margin: 0 0 0 1.5em;
+  clear: right;
+  margin: 0em 0 0 1em;
 }
 
 div.dokuwiki img.mediacenter {
@@ -389,8 +398,8 @@ div.dokuwiki h5 {
     background-color: inherit;
     font-size: 100%;
     font-weight: normal;
-    margin: 0 0 1em 0;
-    padding: 0.5em 0 0 0;
+    margin: 0 0 0.4em 0;
+    padding: 0.6em 0 0 0;
     border-bottom: 1px solid __border__;
     clear: left;
 }
@@ -409,28 +418,27 @@ div.dokuwiki div.level3 {margin-left: 43px;}
 div.dokuwiki div.level4 {margin-left: 63px;}
 div.dokuwiki div.level5 {margin-left: 83px;}
 
+/* all lists - common */
+div.dokuwiki ul,
+div.dokuwiki ol {
+  line-height: 1.5em;
+  list-style-image: none;
+  margin: 0 0 1em 2em;
+  color: __text_alt__;
+}
+
 /* unordered lists */
 div.dokuwiki ul {
-  line-height: 1.5em;
   list-style-type: square;
-  list-style-image: none;
-  margin: 0 0 1em 3.5em;
-  color: __text_alt__;
 }
 
 /* ordered lists */
 div.dokuwiki ol {
-  line-height: 1.5em;
-  list-style-image: none;
-  margin: 0 0 1em 3.5em;
-  color: __text_alt__;
   font-weight: bold;
 }
 
 /* no gap in between nested lists */
-div.dokuwiki li ul {
-  margin-bottom: 0;
-}
+div.dokuwiki li ul,
 div.dokuwiki li ol {
   margin-bottom: 0;
 }
@@ -467,6 +475,11 @@ div.dokuwiki pre {
   border: 1px dashed __border__;
   color: __text__;
   overflow: auto;
+}
+
+div.dokuwiki tt {
+  font-family: "Consolas",monospace;
+  font-size: 100%;
 }
 
 /* code blocks by indention */
@@ -509,78 +522,74 @@ div.dokuwiki table.inline td {
 
 /* ---------- table of contents ------------------- */
 
-div.dokuwiki div.toc {
-  margin: 1.2em 0 0 2em;
+div.dokuwiki #dw__toc {
+  margin: 0.5em 0 0 2em;
   float: right;
-  width: 200px;
-  font-size: 80%;
+  width: 25em;
   clear: both;
 }
 
-div.dokuwiki div.tocheader {
+div.dokuwiki #dw__toc .toggle {
   border: 1px solid __border__;
   background-color: __background_alt__;
+  font-size: 90%;
   text-align: left;
   font-weight: bold;
   padding: 3px;
-  margin-bottom: 2px;
+  margin: 0 0 2px;
 }
 
-div.dokuwiki span.toc_open,
-div.dokuwiki span.toc_close {
-    border: 0.4em solid __background_alt__;
-    float: right;
-    display: block;
-    margin: 0.4em 3px 0 0;
+div.dokuwiki #dw__toc .toggle strong {
+  float: right;
+  display: block;
+  background: transparent url("images/open.gif") no-repeat 0 -2px;
+  width: 8px;
+  height: 13px;
 }
 
-div.dokuwiki span.toc_open span,
-div.dokuwiki span.toc_close span {
-    display: none;
+div.dokuwiki #dw__toc .toggle.closed strong {
+  background-image: url("images/closed.gif");
 }
 
-div.dokuwiki span.toc_open {
-    margin-top: 0.4em;
-    border-top: 0.4em solid __text__;
+div.dokuwiki #dw__toc .toggle strong > span {
+  display: none;
 }
 
-div.dokuwiki span.toc_close {
-    margin-top: 0;
-    border-bottom: 0.4em solid __text__;
-}
-
-div.dokuwiki #toc__inside {
+div.dokuwiki #dw__toc > div {
   border: 1px solid __border__;
   background-color: __background__;
   text-align: left;
-  padding: 0.5em 0 0.7em 0;
+  font-size: 0.8em;
+  padding: 0.5em 0.5em 0.7em 0.5em;
 }
 
 div.dokuwiki ul.toc {
-  list-style-type: none;
-  list-style-image: none;
+  list-style-type: disc;
   line-height: 1.2em;
   padding-left: 1em;
   margin: 0;
 }
 
+/*
 div.dokuwiki ul.toc li {
   background: transparent url(images/tocdot2.gif) 0 0.6em no-repeat;
   padding-left: 0.4em;
 }
+*/
 
 div.dokuwiki ul.toc li.clear {
   background-image: none;
   padding-left: 0.4em;
+  list-style-type: none;
 }
 
-div.dokuwiki a.toc:link,
-div.dokuwiki a.toc:visited {
+div.dokuwiki ul.toc a:link,
+div.dokuwiki ul.toc a:visited {
   color: __extern__;
 }
 
-div.dokuwiki a.toc:hover,
-div.dokuwiki a.toc:active {
+div.dokuwiki ul.toc a:hover,
+div.dokuwiki ul.toc a:active {
   color: __text__;
 }
 
@@ -601,7 +610,7 @@ div.dokuwiki table.diff th {
 }
 div.dokuwiki table.diff td {
   font-family: monospace;
-  font-size: 100%;
+  font-size: 120%;
 }
 div.dokuwiki td.diff-addedline {
   background-color: #ddffdd;
@@ -699,6 +708,7 @@ div.dokuwiki ul.search_quickhits li {
 /* ------------------ Additional ---------------------- */
 
 div.footerinc {
+    margin-top: 4px;
     text-align: center;
 }
 .footerinc a img {

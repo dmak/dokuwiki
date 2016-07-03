@@ -7,14 +7,16 @@
 /* dokuwiki containers & styles */
 
 /* sidebar orientation and position */
-#sidebar {
+div.sidebar {
   width:20%; 
-  margin:0; 
-  padding:0;
   position: relative;
 }
 
-#sidebartop {
+.dtree {
+  padding-left: 5px;
+}
+
+div.sidebartop {
   position: absolute;
   top: -1.2em;
   width: 100%;
@@ -22,11 +24,11 @@
   background: __background_neu__;
 }
 
-.sidebar_inside_left #sidebar {
+.sidebar_inside_left div.sidebar {
     float:left; 
 }
 
-.sidebar_inside_right #sidebar {
+.sidebar_inside_right div.sidebar {
     float:right; 
 }
 
@@ -36,27 +38,28 @@
     padding: 0 1% 0 0.9%;
 }
 
-.sidebar_inside_left .dokuwiki .page, .sidebar_inside_left .dokuwiki .meta {
+.sidebar_inside_left .dokuwiki .page,
+.sidebar_inside_left .dokuwiki .meta {
     float:right; 
-    width:77%;             /* also see IE Win fix below */
-    margin-right: 1%;
-    margin-left:0;
+    width:78%;             /* also see IE Win fix below */
 }
 
-.sidebar_inside_right .dokuwiki .page, .sidebar_inside_right .dokuwiki .meta, .sidebar_inside_right .dokuwiki div.breadcrumbs {
+.sidebar_inside_right .dokuwiki .page,
+.sidebar_inside_right .dokuwiki .meta,
+.sidebar_inside_right .dokuwiki div.breadcrumbs {
     float:left; 
     width:77%; 
     margin-left: 1%;
     margin-right: 0;
 }
 
-.sidebar_outside_left #sidebar {
+.sidebar_outside_left div.sidebar {
     position:absolute; 
     top:0; 
     left:0;
 }
 
-.sidebar_outside_right #sidebar {
+.sidebar_outside_right div.sidebar {
     position:absolute; 
     top:0; 
     right:0;
@@ -95,23 +98,25 @@
 }
 
 /* sidebar contents */
-#sidebar {
-    font-size:10px;
+div.sidebar {
+    font-size: 0.8em;
 }
-#sidebar a {
+
+
+div.sidebar a:link, div.sidebar a:visited {
     color: __existing__;
 }
 
-#sidebar a.wikilink2 {
+div.sidebar a.wikilink2 {
     color: __text_neu__;
 }
 
-#sidebar a.wikilink2:hover {
+div.sidebar a.wikilink2:hover {
     text-decoration:none; 
     cursor:default;
 }
 
-#sidebar h1 {
+div.sidebar h1 {
     font-size:140%; 
     margin-left: 0px; 
     padding-left: 2px; 
@@ -119,43 +124,43 @@
     padding-bottom:0; 
     background-color: __background_alt__;
 }
-#sidebar h2 {
+div.sidebar h2 {
     font-size:120%; 
     margin-left: 4px; 
     font-weight:bold; 
     padding-bottom:0;
 }
-#sidebar h3 {
+div.sidebar h3 {
     font-size:120%; 
     margin-left: 8px; 
     font-weight:normal; 
     padding-bottom:0;
 }
-#sidebar h4 {
+div.sidebar h4 {
     font-size:100%; 
     margin-left: 12px; 
     font-weight:bold; 
     padding-bottom:0;
 }
-#sidebar h5 {
+div.sidebar h5 {
     font-size:100%; 
     margin-left: 16px; 
     font-weight:normal; 
     padding-bottom:0;
 }
-#sidebar .toc {
+div.sidebar .toc {
     display:none;
 }
 
-#sidebar .secedit {
+div.sidebar .secedit {
 }
 
 /* reduced section indentation */
-#sidebar div.level1 {margin-left: 2px;}
-#sidebar div.level2 {margin-left: 6px;}
-#sidebar div.level3 {margin-left: 10px;}
-#sidebar div.level4 {margin-left: 14px;}
-#sidebar div.level5 {margin-left: 18px;}
+div.sidebar div.level1 {margin-left: 2px;}
+div.sidebar div.level2 {margin-left: 6px;}
+div.sidebar div.level3 {margin-left: 10px;}
+div.sidebar div.level4 {margin-left: 14px;}
+div.sidebar div.level5 {margin-left: 18px;}
 
 /* IE fixes (hide from IE Mac) \*/
 
@@ -165,7 +170,7 @@
 
 * html .sidebar_inside_left .page, * html .sidebar_inside_right .page, 
 * html .sidebar_inside_left .meta, * html .sidebar_inside_right .meta {
-    width: 77%;                   /* IE needs extra gap to ensure #sidebar & .page float next to each other \*/
+    width: 77%;                   /* IE needs extra gap to ensure div.sidebar & .page float next to each other \*/
     overflow-x: auto;             /* IE proprietary property to prevent wide images in wiki page forcing sidebar down below wiki page \*/
                                   /* 'overflow-x:auto;' maybe replaced by 'overflow:auto;' to ensure template passes w3c validation \*/
 }

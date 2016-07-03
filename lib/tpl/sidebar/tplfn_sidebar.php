@@ -79,7 +79,7 @@ function tpl_sidebar_content() {
     $REV = '';
     $ACT = 'show';
 #    print p_wiki_xhtml($fileSidebar,'',false);
-    tpl_content();
+    tpl_content(false);
   }
   else {
 #    global $IDX;
@@ -88,7 +88,7 @@ function tpl_sidebar_content() {
     $REV = '';
     $ACT = 'index';
     
-    tpl_content();
+    tpl_content(false);
   }
     
   // restore globals

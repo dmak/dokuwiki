@@ -42,9 +42,8 @@ if (!defined('DOKU_INC')) die();
 <body<?php if (tpl_getConf('enable')) echo " class='$sidebar_class'"; ?>>
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
 <div class="dokuwiki">
-  <?php html_msgarea()?>
-
   <div class="stylehead">
+    <?php html_msgarea()?>
 
     <div class="header">
       <div class="pagename">
@@ -63,11 +62,13 @@ if (!defined('DOKU_INC')) die();
       <div class="bar-left" id="bar__topleft">
         <?php tpl_button('edit')?>
         <?php tpl_button('history')?>
+        <?php tpl_button('subscription')?>
+        <?php tpl_searchform()?>
       </div>
 
       <div class="bar-right" id="bar__topright">
+        <?php tpl_button('login')?>
         <?php tpl_button('recent')?>
-        <?php tpl_searchform()?>&nbsp;
       </div>
 
       <div class="clearer"></div>
@@ -75,8 +76,7 @@ if (!defined('DOKU_INC')) die();
 
     <?php if($conf['breadcrumbs']){?>
     <div class="breadcrumbs">
-      <?php tpl_breadcrumbs()?>
-      <?php //tpl_youarehere() //(some people prefer this)?>
+      <?php tpl_breadcrumbs() ?>
     </div>
     <?php }?>
 
@@ -85,6 +85,7 @@ if (!defined('DOKU_INC')) die();
       <?php tpl_youarehere() ?>
     </div>
     <?php }?>
+
 
   </div>
   <?php flush()?>
@@ -97,9 +98,8 @@ if (!defined('DOKU_INC')) die();
     <!-- wikipage stop -->
   </div>
 <?php if (tpl_getConf('enable')) { ?>
-  <div id="sidebar">
-<?php /*    <div id="sidebartop">hide <?php tpl_sidebar_editbtn(); ?></div> */ ?>
-    <div id="sidebar_content">
+  <div class="sidebar">
+    <div class="sidebar_content">
       <?php tpl_sidebar_content(); ?>
     </div>
   </div>
@@ -126,13 +126,14 @@ if (!defined('DOKU_INC')) die();
       <div class="bar-left" id="bar__bottomleft">
         <?php tpl_button('edit')?>
         <?php tpl_button('history')?>
+        <?php tpl_button('backlink')?>
       </div>
       <div class="bar-right" id="bar__bottomright">
         <?php tpl_button('subscription')?>
         <?php tpl_button('admin')?>
         <?php tpl_button('profile')?>
         <?php tpl_button('login')?>
-        <?php tpl_button('index')?>
+        <?php tpl_button('recent')?>
         <?php tpl_button('top')?>&nbsp;
       </div>
       <div class="clearer"></div>
