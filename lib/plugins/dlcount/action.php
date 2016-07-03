@@ -26,7 +26,7 @@ class action_plugin_dlcount extends DokuWiki_Action_Plugin {
     /*
      * plugin should use this method to register its handlers with the dokuwiki's event controller
      */
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
         $controller->register_hook('MEDIA_SENDFILE', 'BEFORE', $this, '_countdl');
         $controller->register_hook('TPL_CONTENT_DISPLAY', 'BEFORE', $this, '_showcount');
         $controller->register_hook('MEDIA_DELETE_FILE', 'AFTER', $this, '_delcounter');
@@ -68,6 +68,9 @@ class action_plugin_dlcount extends DokuWiki_Action_Plugin {
             } else {
                 // rewrite (http://wiki.birth-online.de/_media/software/php/dlcount.tar.gz)
                 $fn = substr($href, strpos($href, '/_media/')+strlen('/_media/')-1);
+            }
+            if ($conf['fnencode'] == 'utf-8') {
+                $fn = urldecode($fn);
             }
             $metafn = $conf['metadir'] . '/' . self::DATADIR . $fn . self::SUFFIX;
             $meta = array('dlcount' => 0);
@@ -147,7 +150,7 @@ class action_plugin_dlcount extends DokuWiki_Action_Plugin {
     function isValidIP($ip) {
         $ip = trim($ip);
         $isvalid = true;
-        $i = split('\.', $ip, 4);
+        $i = explode('.', $ip, 4);
         $iv = array();
 
         foreach ($i as $key=>$val) {
