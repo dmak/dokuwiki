@@ -39,20 +39,20 @@ class syntax_plugin_google_video extends DokuWiki_Syntax_Plugin {
 	/**
 	* Handle the match
 	*/
-	function handle($match, $state, $pos, &$handler){
+	function handle($match, $state, $pos, Doku_Handler $handler){
 		$match = substr($match,14,-2); // Strip markup
 		return array($state,explode(':',$match));
 	}	
 	/**
 	* Create output
 	*/
-	function render($mode, &$renderer, $data) {
+	function render($mode, Doku_Renderer $renderer, $data) {
 		if($mode == 'xhtml')
 		{
 			list($state, $match) = $data;
 			list($disptype,$id) = $match;
 			
-			$href_start = '<a href="http://video.google.com/googleplayer.swf?docId='.$id.'">';			
+			$href_start = '<a href="//video.google.com/googleplayer.swf?docId='.$id.'">';
 			
 			$LOGO_URL = '/_media/icon/googlevideo.png';
 			if ($disptype=='link'){
@@ -62,13 +62,13 @@ class syntax_plugin_google_video extends DokuWiki_Syntax_Plugin {
 			elseif ($disptype=='large')
 			{
 				$obj  = '<object width="425" height="350" type="application/x-shockwave-flash"';
-				$obj .= ' data="http://video.google.com/googleplayer.swf?docId='.$id.'">';
+				$obj .= ' data="//video.google.com/googleplayer.swf?docId='.$id.'">';
 				$obj .= '<param name="movie" value="http://video.google.com/googleplayer.swf?docId='.$id.'"></object>';
 				$renderer->doc .= $obj;
 			}
 			elseif($disptype=='small'){
 	                        $obj  = '<object width="255" height="210" type="application/x-shockwave-flash"';
-				$obj .= ' data="http://video.google.com/googleplayer.swf?docId='.$id.'">';
+				$obj .= ' data="//video.google.com/googleplayer.swf?docId='.$id.'">';
 				$obj .= '<param name="movie" value="http://video.google.com/googleplayer.swf?docId='.$id.'"></object>';
 				$renderer->doc .= $obj;
 			}

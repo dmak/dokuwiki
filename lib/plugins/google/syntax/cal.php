@@ -40,7 +40,7 @@ class syntax_plugin_google_cal extends DokuWiki_Syntax_Plugin {
 		$this->Lexer->addSpecialPattern('{{googlecal>[^}]+?}}', $mode, 'plugin_google_cal'); 
 	}
 
-	function handle($match, $state, $pos, &$handler) {
+	function handle($match, $state, $pos, Doku_Handler $handler) {
 		$matches=array();
 
 		if(preg_match('/{{googlecal>([^}]+?)}}/', $match, $matches)) { // Hook for future features
@@ -92,7 +92,7 @@ class syntax_plugin_google_cal extends DokuWiki_Syntax_Plugin {
 		} // matched {{googlecal>...
 	}
 
-	function render($mode, &$renderer, $data) {
+	function render($mode, Doku_Renderer $renderer, $data) {
 		list($style, $options) = $data;
 		if($mode == 'xhtml') {
 			// Two styles: wiki and error
@@ -101,7 +101,7 @@ class syntax_plugin_google_cal extends DokuWiki_Syntax_Plugin {
 				$options['frameborder'] = 0;
 
 				$renderer->doc .=
-					'<iframe src="http://www.google.com/calendar/embed?src=' . $options['url'] .
+					'<iframe src="//www.google.com/calendar/embed?src=' . $options['url'] .
 					'&height=' . $options['height'] .
 					'&title=' . $options['alt'];
 

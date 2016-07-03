@@ -73,7 +73,7 @@ class syntax_plugin_google_maps extends DokuWiki_Syntax_Plugin
 		));
 	}
 
-	function handle($match, $state, $pos, &$handler)
+	function handle($match, $state, $pos, Doku_Handler $handler)
 	{
 		switch ($state)
 		{
@@ -106,7 +106,7 @@ class syntax_plugin_google_maps extends DokuWiki_Syntax_Plugin
 		return array($state, $match);
 	}
 
-	function render($mode, &$renderer, $data)
+	function render($mode, Doku_Renderer $renderer, $data)
 	{
 		if ($mode == 'xhtml')
 		{
@@ -135,7 +135,7 @@ class syntax_plugin_google_maps extends DokuWiki_Syntax_Plugin
 					if ($state == DOKU_LEXER_SPECIAL && $options['type'] == 'embedded')
 					{
 						// Dynamic injection of this script via JS causes FF to hang, so we have to include it for each map:
-						$renderer->doc .= "\n<script type='text/javascript' src='http://maps.google.com/maps?file=api&v=2.x&key=" . $this->getConf('google_api_key') . "'></script>";
+						$renderer->doc .= "\n<script type='text/javascript' src='//maps.google.com/maps?file=api&v=2.x&key=" . $this->getConf('google_api_key') . "'></script>";
 
 						// Default values:
 						$size			= $this->getConfigValue($options, 'size');
@@ -181,7 +181,7 @@ class syntax_plugin_google_maps extends DokuWiki_Syntax_Plugin
 					}
 
 					// Query is already escaped, params are taken from options:
-					$url = "http://maps.google.com/maps?q=$locations[0]$params";
+					$url = "//maps.google.com/maps?q=$locations[0]$params";
 
 					// External link:
 					$renderer->doc .= "<a href='$url' class='gmaps_link'>";
