@@ -33,7 +33,7 @@ class syntax_plugin_youtube extends DokuWiki_Syntax_Plugin {
   function getSort(){ return 159; }
   function connectTo($mode) { $this->Lexer->addSpecialPattern('\{\{\s?youtube>[^}]*\s?\}\}',$mode,'plugin_youtube'); }
   
-  function handle($match, $state, $pos, &$handler){
+  function handle($match, $state, $pos, Doku_Handler $handler){
     $pm = preg_match_all($this->pattern,$match,$result);
     $left  = ($result[1][0]==" ");
     $right = ($result[5][0]==" ");
@@ -50,7 +50,7 @@ class syntax_plugin_youtube extends DokuWiki_Syntax_Plugin {
     return array($state, array($cmd,$id,$align,$title));
   } 
 
-  function render($mode, &$renderer, $data){
+  function render($mode, Doku_Renderer $renderer, $data){
     if($mode != 'xhtml'){return false;}
     list($state, $match) = $data;
     list($cmd,$id,$align,$title) = $match;
@@ -59,7 +59,7 @@ class syntax_plugin_youtube extends DokuWiki_Syntax_Plugin {
     $title = str_replace("+"," ",$title);
     switch($cmd){
       case 'link':
-        $lnkFormat='<a href="http://www.youtube.com/watch?v=%s" title="%s">';
+        $lnkFormat='<a href="//www.youtube.com/watch?v=%s" title="%s">';
         $href_start=sprintf($lnkFormat,$id,empty($title)?$id:$title.' ('.$id.')');
         $renderer->doc.=$href_start.'<div class="youtube_icon">'.$title.'</div></a>';
         return true;
