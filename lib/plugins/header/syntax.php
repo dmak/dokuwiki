@@ -40,7 +40,7 @@ class syntax_plugin_header extends DokuWiki_Syntax_Plugin {
  
     function getSort() { return 45; }                       /* same as header */
     function getType() { return 'baseonly'; }
-    function getAllowedTypes() { return array('formatting'); }
+    function getAllowedTypes() { return array('substition', 'formatting'); }
     function getPType(){ return 'normal';}
  
     function connectTo($mode) { 
@@ -52,7 +52,7 @@ class syntax_plugin_header extends DokuWiki_Syntax_Plugin {
       $this->Lexer->addExitPattern('={2,}[ \t]*(?=\n)', 'plugin_header');
     }
  
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
       static $level;
       switch ($state) {
           case DOKU_LEXER_ENTER:
@@ -98,7 +98,7 @@ class syntax_plugin_header extends DokuWiki_Syntax_Plugin {
       return NULL;
     }
  
-    function render($mode, &$renderer, $indata) {
+    function render($mode, Doku_Renderer $renderer, $indata) {
  
       list($instr, $data, $pos) = $indata;
  
@@ -139,7 +139,8 @@ class syntax_plugin_header extends DokuWiki_Syntax_Plugin {
         //handle section editing
         if($level <= $conf['maxseclevel']){
             // add button for last section if any
-            if($renderer->lastsec) $renderer->_secedit($renderer->lastsec,$pos-1);
+            // API has changed so that below function does not exist. html_secedit() should be called for complete page.
+            // if($renderer->lastsec) $renderer->_secedit($renderer->lastsec,$pos-1);
             // remember current position
             $renderer->lastsec = $pos;
         }
@@ -169,14 +170,9 @@ class syntax_plugin_header extends DokuWiki_Syntax_Plugin {
         $id = $renderer->_headerToLink($title,'true');
  
         //handle TOC
-        if($level >= $conf['toptoclevel'] && $level <= $conf['maxtoclevel']){
-          if ($title) {    
-            // the TOC is one of our standard ul list arrays ;-)
-             $renderer->toc[] = array('hid'   => $id,
-                                      'title' => $title,
-                                      'type'  => 'ul',
-                                      'level' => $level-$conf['toptoclevel']+1);
-          }
+        if ($title) {    
+          // the TOC is one of our standard ul list arrays ;-)
+          $renderer->toc_additem($id, trim($title), $level);
         }
  
         // rebuild the rendered doc
