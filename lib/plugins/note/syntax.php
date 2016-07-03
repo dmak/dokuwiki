@@ -45,6 +45,7 @@ class syntax_plugin_note extends DokuWiki_Syntax_Plugin {
         'noteimportant' => array('important', 'importante'),
         'notewarning'   => array('warning','bloquante','critique'),
         'notetip'       => array('tip','tuyau','idée'),
+        'notequestion'  => array('question'),
         'noteclassic'   => array('','classic','classique')
       );
       
@@ -55,8 +56,8 @@ class syntax_plugin_note extends DokuWiki_Syntax_Plugin {
     }
  
  
-    function getType(){ return 'container'; }
-    function getPType(){ return 'normal'; }
+    function getType(){ return 'protected'; }
+    function getPType(){ return 'block'; }
     function getAllowedTypes() { 
         return array('container','substition','protected','disabled','formatting','paragraphs');
     }
@@ -76,7 +77,7 @@ class syntax_plugin_note extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addExitPattern('</note>','plugin_note');
     }
  
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
 
         switch ($state) {
 
@@ -98,7 +99,7 @@ class syntax_plugin_note extends DokuWiki_Syntax_Plugin {
         }
     }
  
-    function render($mode, &$renderer, $indata) {
+    function render($mode, Doku_Renderer $renderer, $indata) {
 
         if($mode == 'xhtml'){
 

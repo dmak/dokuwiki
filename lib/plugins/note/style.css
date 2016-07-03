@@ -1,15 +1,12 @@
-.noteclassic, .noteimportant, .notewarning, .notetip {
-  margin: 2em;
+.noteclassic, .noteimportant, .notewarning, .notetip, .notequestion {
+  margin: 1em;
   margin-left: auto;
   margin-right: auto;
-  width: 70% !important;
   min-height: 40px;
-  clear: both;
-  text-align: justify;
   vertical-align: middle;
   border-collapse: collapse;
-  padding: 15px 20px 15px 80px;
-  background-position: 20px 50%;
+  padding: 10px 20px 10px 80px;
+  background-position: 20px 5px;
   background-repeat: no-repeat;
   -moz-border-radius: 20px;
   -khtml-border-radius: 20px;
@@ -38,4 +35,10 @@
   /*border: 1px solid #9d9;*/
   background-color: #dfd;
   background-image: url(images/tip.png);
+}
+
+.notequestion {
+  /*border: 1px solid #d4621c;*/
+  background-color: #ffc048;
+  background-image: url(images/question.gif);
 }
