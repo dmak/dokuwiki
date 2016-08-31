@@ -395,8 +395,8 @@ class renderer_plugin_text extends Doku_Renderer_xhtml {
         }
     }
 
-    function multiplyentity($x, $y) {
-        $this->doc .= $x.'x'.$y;
+    function multiplyentity($a) {
+        $this->doc .= implode('x', $a);
     }
 
     function singlequoteopening() {
