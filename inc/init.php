@@ -198,9 +198,11 @@ require_once(DOKU_INC.'inc/load.php');
 define('DOKU_HAS_BZIP', function_exists('bzopen'));
 define('DOKU_HAS_GZIP', function_exists('gzopen'));
 if($conf['compression'] == 'bz2' && !DOKU_HAS_BZIP) {
+    error_log("bz2 compression is requested, but PHP bz2 module is not available");
     $conf['compression'] = 'gz';
 }
 if($conf['compression'] == 'gz' && !DOKU_HAS_GZIP) {
+    error_log("gz compression is requested, but zlib is not available");
     $conf['compression'] = 0;
 }
 
