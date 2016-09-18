@@ -73,7 +73,7 @@ All documentation and additional information besides the [[syntax|syntax descrip
   * :ADD: [[doku>plugin:htmlcomment|htmlcomment]]
   * [[doku>plugin:math|math]] and [[http://wiki.splitbrain.org/plugin:latex|latex]] -- embedded formulas support
   * :ADD: [[doku>plugin:mllist|mllist]] -- support of linebreaks for lists
-  * [[doku>plugin:linkext|linkext]] -- adding letters following the link to the link //does not work, core should be patched//
+  * :WARN: [[doku>plugin:linkext|linkext]] (//does not work, core should be patched//) -- adding letters following the link to the link
   * [[doku>plugin:phpinc|phpinc]], [[http://wiki.splitbrain.org/plugin:source|source]] -- include PHP/HTML files into the page
   * [[doku>plugin:javadoc|javadoc]]
   * :ADD: [[doku>plugin:dlcount|dlcount]] -- adds download counters to download links
@@ -81,9 +81,10 @@ All documentation and additional information besides the [[syntax|syntax descrip
   * :ADD: [[doku>plugin:authchained|authchained]] -- delegates the authentication to the authentication plugin, which first returns true when checking username and password
   * :ADD: [[doku>plugin:searchtext|searchtext]] -- plugin searches pages rendered as text instead of raw wiki
   * :ADD: [[doku>plugin:indexmenu|indexmenu]], [[doku>plugin:indexmenu2|indexmenu2]], [[doku>plugin:pageindex|pageindex]] -- representing namespaces/pages as a JS menu or list
+  * :ADD: [[doku>plugin:codemirror|codemirror]] -- DokuWiki editor with syntax highlighting
   * [[doku>plugin:flowplay|flowplay]] -- integrates the flowplayer to stream video to an embedded flash applet (like on YouTube)
   * [[doku>plugin:google_cal|google cal]]
-  * [[doku>plugin:googlemaps|google maps]] //was rewritten, see [[plugin:google_maps]]//
+  * [[doku>plugin:googlemaps|google maps]] (//was rewritten, see [[plugin:google_maps]]//)
   * [[doku>plugin:google_video|google video]]
   * [[doku>plugin:youtube|youtube]]
   * [[doku>plugin:goto|goto]]

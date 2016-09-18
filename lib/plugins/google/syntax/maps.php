@@ -29,7 +29,7 @@ class syntax_plugin_google_maps extends DokuWiki_Syntax_Plugin
 		return array(
 			'author'	=> 'Dmitry Katsubo',
 			'email'		=> 'dma_k@mail.ru',
-			'date'		=> '2010-10-15',
+			'date'		=> '2016-09-20',
 			'name'		=> 'Google Maps Plugin',
 			'desc'		=> 'Adds a Google Maps frame 
 				 syntax: {{googlemaps>address1;address2;address3[zoom=16,size=small,control=hierarchical,overviewmap=true,width=800,height=600,type=embedded]|alternative text}}',

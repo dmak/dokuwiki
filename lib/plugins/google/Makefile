@@ -6,7 +6,7 @@ CONFIG := conf/default.php
 # Date-based:
 #VERSION := `date +%F`
 
-# Plugin based (note double escaping of varibale $1 because it is evaluated twice by two shells):
+# Plugin based (note double escaping of variable $1 because it is evaluated twice by two shells):
 VERSION := `perl -ne "/'date'\s+=>\s+'(\d{4,4}-\d{2,2}-\d{2,2})'/ && print qq{\\$$1}" < syntax/maps.php`
 
 PACKAGE := google-$(VERSION).tar.bz2
@@ -24,10 +24,10 @@ dist: proper
 #	Generate VERSION
 	@echo $(VERSION) > VERSION
 #	Spoil my Google API key:
-	perl -pe "s/(google_api_key.+?)('.+';)$$/\$$1\U\$$2/" < $(CONFIG) > $(CONFIG).build
+#	perl -pe "s/(google_api_key.+?)('.+';)$$/\$$1\U\$$2/" < $(CONFIG) > $(CONFIG).build
 	mv $(CONFIG).build $(CONFIG)
 	tar --exclude=.svn --exclude=Makefile --exclude=*.bz2 --exclude=*.build -C .. -cjf $(PACKAGE) google
-	svn revert conf/default.php
+#	svn revert conf/default.php
 	rm VERSION
 
 print:
