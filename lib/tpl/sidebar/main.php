@@ -31,6 +31,7 @@ if (!defined('DOKU_INC')) die();
     <?php tpl_pagetitle()?>
     [<?php echo strip_tags($conf['title'])?>]
   </title>
+  <meta name="viewport" content="initial-scale=1.0,width=device-width" />
 
   <?php tpl_metaheaders()?>
 
@@ -73,53 +74,54 @@ if (!defined('DOKU_INC')) die();
 
       <div class="clearer"></div>
     </div>
-
-    <?php if($conf['breadcrumbs']){?>
-    <div class="breadcrumbs">
-      <?php tpl_breadcrumbs() ?>
-    </div>
-    <?php }?>
-
-    <?php if($conf['youarehere']){?>
-    <div class="breadcrumbs">
-      <?php tpl_youarehere() ?>
-    </div>
-    <?php }?>
-
-
   </div>
   <?php flush()?>
 
-  <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
+  <div class="pagebar">
+    <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
 
-  <div class="page">
-    <!-- wikipage start -->
-    <?php tpl_content()?>
-    <!-- wikipage stop -->
-  </div>
-<?php if (tpl_getConf('enable')) { ?>
-  <div class="sidebar">
-    <div class="sidebar_content">
-      <?php tpl_sidebar_content(); ?>
+    <div class="pagecontainer">
+      <?php if($conf['breadcrumbs']){?>
+      <div class="breadcrumbs">
+        <?php tpl_breadcrumbs() ?>
+      </div>
+      <?php }?>
+
+      <?php if($conf['youarehere']){?>
+      <div class="breadcrumbs">
+        <?php tpl_youarehere() ?>
+      </div>
+      <?php }?>
+
+      <div class="page">
+        <!-- wikipage start -->
+        <?php tpl_content()?>
+        <!-- wikipage stop -->
+      </div>
+
+      <div class="meta">
+        <div class="user">
+          <?php tpl_userinfo()?>
+        </div>
+        <div class="doc">
+          <?php tpl_pageinfo()?>
+        </div>
+      </div>
     </div>
-  </div>
+<?php if (tpl_getConf('enable')) { ?>
+    <div class="sidebar">
+      <div class="sidebar_content">
+        <?php tpl_sidebar_content(); ?>
+      </div>
+    </div>
 <?php } ?>
+  </div>
 
   <div class="clearer">&nbsp;</div>
 
   <?php flush()?>
 
   <div class="stylefoot">
-
-    <div class="meta">
-      <div class="user">
-        <?php tpl_userinfo()?>
-      </div>
-      <div class="doc">
-        <?php tpl_pageinfo()?>
-      </div>
-    </div>
-
    <?php /*old includehook*/ @include(dirname(__FILE__).'/pagefooter.html')?>
 
     <div class="bar" id="bar__bottom">
