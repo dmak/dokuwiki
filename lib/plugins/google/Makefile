@@ -22,15 +22,13 @@ dummy:
 
 dist: proper
 	@if [ "`git status --porcelain 2>/dev/null | grep -v $(CONFIG) | wc -l`" -ne 0 ]; then echo "Directory is dirty. Commit the changes first."; exit 1; fi
-	git stash
+	git stash save -q "Changes before making tarball for Google plugin v$(VERSION)"
 #	Generate VERSION
 	@echo $(VERSION) > VERSION
-	exit 1
-	sleep 1
-	tar --exclude=.svn --exclude=.gitignore --exclude=Makefile --exclude=*.bz2 --exclude=*.tmp -C .. -cjf $(PACKAGE) google
+	tar --exclude=.svn --exclude=.gitignore --exclude=Makefile --exclude=*.bz2 --exclude=*.tmp -C .. -cjf ../$(PACKAGE) google
 	rm VERSION
 	git tag google_$(VERSION)
-	git stash pop
+	git stash pop -q
 	@echo "Now run 'git push origin google_$(VERSION)'"
 
 print:
